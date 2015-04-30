@@ -2,7 +2,7 @@ import sbt._
 import Keys._
 
 object Dependencies {
-    val jflex = "de.jflex" % "jflex" % "1.6.0" % "compile"
+    val jflex = "edu.umass.cs.iesl" % "jflex-scala" % "1.6.0" % "compile"
 
     val commonDeps = Seq(
         jflex
@@ -13,12 +13,12 @@ object BuildSbtJFlex extends Build {
     import Dependencies._
 
     val sbtAntlr = Project(
-        id = "sbt-jflex",
+        id = "sbt-jflex-scala",
         base = file("."),
 
         settings = Defaults.defaultSettings ++ Seq(
-            organization := "org.scalanlp",
-            version := "0.3",
+            organization := "edu.umass.cs.iesl",
+            version := "0.1",
             sbtPlugin := true,
             
             scalacOptions := Seq("-deprecation", "-unchecked"),
@@ -35,7 +35,7 @@ object BuildSbtJFlex extends Build {
                 publishArtifact in Test := false,
                 pomIncludeRepository := { _ => false },
                 pomExtra := (
-                  <url>http://scalanlp.org/</url>
+                  <url>http://github.com/strubell/sbt-jflex-scala</url>
                   <licenses>
                     <license>
                       <name>Apache 2</name>
@@ -44,18 +44,18 @@ object BuildSbtJFlex extends Build {
                     </license>
                   </licenses>
                   <scm>
-                    <url>git@github.com:dlwh/breeze.git</url>
-                    <connection>scm:git:git@github.com:dlwh/breeze.git</connection>
+                    <url>git@github.com:strubell/sbt-jflex-scala.git</url>
+                    <connection>scm:git@github.com:strubell/sbt-jflex-scala.git</connection>
                   </scm>
                   <developers>
                     <developer>
-                      <id>dlwh</id>
-                      <name>David Hall</name>
-                      <url>http://cs.berkeley.edu/~dlwh/</url>
+                      <id>strubell</id>
+                      <name>Emma Strubell</name>
+                      <url>http://cs.umass.edu/~strubell/</url>
                     </developer>
                   </developers>
                 )
 
-        ) ++ net.virtualvoid.sbt.graph.Plugin.graphSettings
+        )
     )
 }

@@ -45,7 +45,7 @@ object SbtJFlexPlugin extends Plugin {
   lazy val jflexSettings: Seq[Project.Setting[_]] = inConfig(jflex)(Seq(
     toolConfiguration := JFlexToolConfiguration(),
     pluginConfiguration := PluginConfiguration(),
-    antlrDependency := "de.jflex" % "jflex" % "1.6.0",
+    antlrDependency := "edu.umass.cs.iesl" % "jflex-scala" % "1.6.0",
 
     sourceDirectory <<= (sourceDirectory in Compile) { _ / "flex" },
     javaSource <<= sourceManaged in Compile,
@@ -83,7 +83,7 @@ object SbtJFlexPlugin extends Plugin {
     target.mkdirs()
 
     // configure antlr tool
-    log.info("JFlex: Using JFlex version %s to generate source files.".format(Main.version))
+    log.info("JFlex-scala: Using JFlex-scala version %s to generate source files.".format(Main.version))
     Options.dot = tool.dot
     Options.verbose = tool.verbose
     Options.dump = tool.dump
@@ -91,21 +91,21 @@ object SbtJFlexPlugin extends Plugin {
 
     // process grammars
     val grammars = (srcDir ** ("*" + options.grammarSuffix)).get
-    log.info("JFlex: Generating source files for %d grammars.".format(grammars.size))
+    log.info("JFlex-scala: Generating source files for %d grammar(s).".format(grammars.size))
 
     // add each grammar file into the antlr tool's list of grammars to process
     grammars foreach { g =>
       Main.generate(g)
-      log.info("JFlex: Grammar file '%s' detected.".format(g.getPath))
+      log.info("JFlex-scala: Grammar file '%s' detected.".format(g.getPath))
     }
 
-    (target ** ("*.java")).get.toSet
+    (target ** ("*.scala")).get.toSet
   }
 
   private def printJFlexOptions(log: Logger, options: JFlexToolConfiguration) {
-    log.debug("ANTLR: dump                : " + options.dump)
-    log.debug("ANTLR: dot                 : " + options.dot)
-    log.debug("ANTLR: verbose             : " + options.verbose)
+    log.debug("JFlex-scala: dump                : " + options.dump)
+    log.debug("JFlex-scala: dot                 : " + options.dot)
+    log.debug("JFlex-scala: verbose             : " + options.verbose)
   }
 
 }
