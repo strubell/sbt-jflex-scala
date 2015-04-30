@@ -1,8 +1,9 @@
-# sbt-jflex
+# sbt-jflex-scala
 
-A plugin for sbt-0.11.x that generates code based on an jflex specification.
+A plugin for sbt-0.11.x that generates code based on a jflex-scala specification.
 
-This is a shameless fork-and-adapt of stefri's sbt-antlr plugin.
+This is a shameless fork-and-adapt of dlwh's sbt-jflex, which is in turn a 
+shameless fork-and-adapt of stefri's sbt-antlr plugin.
 
 
 ## Usage
