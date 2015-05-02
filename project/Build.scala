@@ -2,7 +2,7 @@ import sbt._
 import Keys._
 
 object Dependencies {
-    val jflex = "edu.umass.cs.iesl" % "jflex-scala" % "1.6.0" % "compile"
+    val jflex = "edu.umass.cs.iesl" % "jflex-scala" % "1.6.1" % "compile"
 
     val commonDeps = Seq(
         jflex

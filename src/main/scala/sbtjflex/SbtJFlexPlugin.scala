@@ -45,7 +45,7 @@ object SbtJFlexPlugin extends Plugin {
   lazy val jflexSettings: Seq[Project.Setting[_]] = inConfig(jflex)(Seq(
     toolConfiguration := JFlexToolConfiguration(),
     pluginConfiguration := PluginConfiguration(),
-    antlrDependency := "edu.umass.cs.iesl" % "jflex-scala" % "1.6.0",
+    antlrDependency := "edu.umass.cs.iesl" % "jflex-scala" % "1.6.1",
 
     sourceDirectory <<= (sourceDirectory in Compile) { _ / "flex" },
     javaSource <<= sourceManaged in Compile,
@@ -87,6 +87,7 @@ object SbtJFlexPlugin extends Plugin {
     Options.dot = tool.dot
     Options.verbose = tool.verbose
     Options.dump = tool.dump
+    Options.emitScala = true
     Options.setDir(target.getPath)
 
     // process grammars
