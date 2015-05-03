@@ -24,12 +24,14 @@ import jflex.Main
 import scala.collection.JavaConversions._
 import Project.Initialize
 
-object SbtJFlexPlugin extends Plugin {
+object SbtJFlexPlugin extends Plugins {
 
   final case class JFlexToolConfiguration(
     dot: Boolean = false,
     dump: Boolean = false,
-    verbose: Boolean = false)
+    verbose: Boolean = false,
+    emitScala: Boolean = true
+  )
 
   final case class PluginConfiguration(
     grammarSuffix: String = ".flex"
@@ -87,7 +89,7 @@ object SbtJFlexPlugin extends Plugin {
     Options.dot = tool.dot
     Options.verbose = tool.verbose
     Options.dump = tool.dump
-    Options.emitScala = true
+    Options.emitScala = tool.emitScala
     Options.setDir(target.getPath)
 
     // process grammars

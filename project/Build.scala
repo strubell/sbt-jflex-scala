@@ -21,7 +21,7 @@ object BuildSbtJFlex extends Build {
             version := "0.1",
             sbtPlugin := true,
             publishMavenStyle := true,
-            
+
             scalacOptions := Seq("-deprecation", "-unchecked"),
 
             libraryDependencies ++= commonDeps,
