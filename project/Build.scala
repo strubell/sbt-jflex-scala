@@ -20,6 +20,7 @@ object BuildSbtJFlex extends Build {
             organization := "edu.umass.cs.iesl",
             version := "0.1",
             sbtPlugin := true,
+            publishMavenStyle := true,
             
             scalacOptions := Seq("-deprecation", "-unchecked"),
 
